@@ -58,7 +58,7 @@ class BinarySearchTree {
 
   }
   breadthFirstForEach(callback) {
-    const queue = [this]
+    const queue = [this] // this is the first node (root)
 
     while (queue.length) {
       const nodeToProcess = queue.shift()

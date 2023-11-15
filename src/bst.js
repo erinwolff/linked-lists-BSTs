@@ -35,10 +35,44 @@ class BinarySearchTree {
     }
   }
 
-  depthFirstForEach() { }
-  breadthFirstForEach() { }
+  depthFirstForEach(callback, order = 'in-order') {
+    if (order === 'pre-order') {
+      callback(this.value)
+    }
 
+    if (this.left) {
+      this.left.depthFirstForEach(callback, order)
+    }
 
+    if (order === 'in-order') {
+      callback(this.value)
+    }
+
+    if (this.right) {
+      this.right.depthFirstForEach(callback, order)
+    }
+
+    if (order === 'post-order') {
+      callback(this.value)
+    }
+
+  }
+  breadthFirstForEach(callback) {
+    const queue = [this]
+
+    while (queue.length) {
+      const nodeToProcess = queue.shift()
+      if (nodeToProcess.left) {
+        queue.push(nodeToProcess.left)
+      }
+
+      if (nodeToProcess.right) {
+        queue.push(nodeToProcess.right)
+      }
+
+      callback(nodeToProcess.value)
+    }
+  }
 }
 
 module.exports = BinarySearchTree

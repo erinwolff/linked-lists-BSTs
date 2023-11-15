@@ -32,7 +32,7 @@ class LinkedList {
       formerHead.previous = addNode
       addNode.next = formerHead
     } else {
-      this.head = addNode
+      this.tail = addNode
     }
   }
 
